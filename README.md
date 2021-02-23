@@ -1,17 +1,17 @@
-# hyperindex
+# dwebindex
 
-A keyword based search index built on [Hypertrie](https://github.com/mafintosh/hypertrie)
+A keyword based search index built on [dWebTrie](https://github.com/hypertrie)
 
 ```
-npm install hyperindex
+npm install dwebindex
 ```
 
 ## Usage
 
 ``` js
-const Hyperindex = require('hyperindex')
+const DWebIndex = require('dwebindex')
 const ram = require('random-access-memory')
-const idx = new Hyperindex(ram, { valueEncoding: 'json' })
+const idx = new DWebIndex(ram, { valueEncoding: 'json' })
 
 idx.add({
   some: 'data',
@@ -35,13 +35,13 @@ stream.on('data', function (document) {
 
 ## API
 
-#### `index = new Hyperindex(storage, [key], [options])`
+#### `index = new DWebIndex(storage, [key], [options])`
 
-Create a new index. All arguments are forwarded to the Hypertrie instance.
-To create an index from an existing Hypercore feed you can use the feed option
+Create a new index. All arguments are forwarded to the dWebTrie instance.
+To create an index from an existing dDatabase feed you can use the feed option
 
 ``` js
-new Hyperindex(null, { feed: existingFeed })
+new DWebIndex(null, { feed: existingFeed })
 ```
 
 If you're storing JSON documents, set `valueEncoding: 'json'` in the options as well.
@@ -81,7 +81,7 @@ Do a streaming union of multiple keywords.
 
 #### `replicationStream = index.replicate(...args)`
 
-Make a replication stream. Options forwarded to Hypertrie.
+Make a replication stream. Options forwarded to dWebTrie.
 
 ## License
 
