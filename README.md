@@ -1,6 +1,6 @@
 # dwebindex
 
-A keyword based search index built on [dWebTrie](https://github.com/hypertrie)
+A keyword based search index built on [dWebTrie](https://github.com/dwebprotocol/dwebtrie)
 
 ```
 npm install dwebindex
