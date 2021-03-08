@@ -1,7 +1,7 @@
-const HyperIndex = require('./')
+const DWebIndex = require('./')
 const ram = require('random-access-memory')
 
-const idx = new HyperIndex(ram, { valueEncoding: 'json' })
+const idx = new DWebIndex(ram, { valueEncoding: 'json' })
 
 idx.add({
   title: 'also cool'
@@ -20,7 +20,7 @@ idx.add({
 }, {
   keywords: ['stuff']
 }, function () {
-  HyperIndex.or(idx.lookup('test'), idx.lookup('testing'))
+  DWebIndex.or(idx.lookup('test'), idx.lookup('testing'))
     .on('data', console.log)
     .on('end', () => console.log('done!'))
 })

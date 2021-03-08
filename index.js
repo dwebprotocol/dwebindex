@@ -1,4 +1,4 @@
-const hypertrie = require('hypertrie')
+const dwebtrie = require('dwebtrie')
 const mutexify = require('mutexify')
 const stream = require('streamx')
 const pump = require('pump')
@@ -7,9 +7,9 @@ const Intersect = require('sorted-intersect-stream')
 
 const ORDER = Symbol('order')
 
-class HyperIndex {
+class DWebIndex {
   constructor (storage, key, opts) {
-    this.trie = hypertrie(storage, key, opts)
+    this.trie = dwebtrie(storage, key, opts)
     this.lock = mutexify()
   }
 
@@ -70,12 +70,12 @@ class HyperIndex {
 
   and (...words) {
     const streams = [...words].map(w => typeof w === 'string' ? this.lookup(w) : w)
-    return HyperIndex.and(...streams)
+    return DWebIndex.and(...streams)
   }
 
   or (...words) {
     const streams = [...words].map(w => typeof w === 'string' ? this.lookup(w) : w)
-    return HyperIndex.or(...streams)
+    return DWebIndex.or(...streams)
   }
 
   static and (...streams) {
@@ -111,7 +111,7 @@ class HyperIndex {
   }
 }
 
-module.exports = HyperIndex
+module.exports = DWebIndex
 
 function cmp (a, b) {
   return a[ORDER] < b[ORDER] ? -1 : a[ORDER] > b[ORDER] ? 1 : 0
